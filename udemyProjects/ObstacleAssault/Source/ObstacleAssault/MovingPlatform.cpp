@@ -15,8 +15,7 @@ AMovingPlatform::AMovingPlatform()
 void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
-	int Number = 19;
-	UE_LOG(LogTemp, Display, TEXT("Integer number: %i"), Number);
+	StartLocation = GetActorLocation();
 	
 }
 
@@ -24,9 +23,27 @@ void AMovingPlatform::BeginPlay()
 void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	MoveOrRotate ? RotatePlatform(DeltaTime) : MovePlatform(DeltaTime);
+}
 
-	FVector CurrentLocation = GetActorLocation();
-	CurrentLocation = CurrentLocation + FVector(0, 0, 1);
-	SetActorLocation(CurrentLocation);
+void AMovingPlatform::MovePlatform(float DeltaTime)
+{
+	AddActorLocalOffset(PlatformVelocity * DeltaTime);
+	
+    float DistanceMoved = FVector::Dist(StartLocation, GetActorLocation());
+	
+    if (DistanceMoved >= MoveDistance)
+    {
+    	FVector MoveDirection = PlatformVelocity.GetSafeNormal();
+    	FVector NewStartLocation = StartLocation + MoveDirection * MoveDistance;
+    	SetActorLocation(NewStartLocation);
+    	StartLocation = GetActorLocation();
+    	PlatformVelocity = -PlatformVelocity;
+    }
+}
+
+void AMovingPlatform::RotatePlatform(float DeltaTime)
+{
+	AddActorLocalRotation(RotationVelocity * DeltaTime);
 }
 

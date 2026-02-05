@@ -77,3 +77,5 @@ SourceArt/**/*.tga
 # External Actors/Objects (UE5)
 **/__ExternalActors__/
 **/__ExternalObjects__/
+SFX_downloads
+udemyProjects/builds
