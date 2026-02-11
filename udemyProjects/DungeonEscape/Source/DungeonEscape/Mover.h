@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Math/UnrealMathUtility.h"
+
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Mover.generated.h"
@@ -32,11 +32,21 @@ public:
 	UPROPERTY(EditAnywhere)
 	float MoveTime;
 	
-	UPROPERTY(EditAnywhere)
-	bool bShouldMove = false;
+	UPROPERTY(VisibleAnywhere)
+	bool ReachedTarget = false;
 	
 	FVector StartLocation;
 	FVector TargetLocation;
 	
+	UFUNCTION()
+	bool GetShouldMove();
+	
+	UFUNCTION()
+	void SetShouldMove(bool NewShouldMove);
+	
+private:
+	
+	UPROPERTY(VisibleAnywhere)
+	bool bShouldMove = false;
 		
 };

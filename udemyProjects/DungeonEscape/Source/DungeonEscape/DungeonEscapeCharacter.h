@@ -47,7 +47,10 @@ protected:
 
 	/** Mouse Look Input Action */
 	UPROPERTY(EditAnywhere, Category ="Input")
-	class UInputAction* MouseLookAction;
+	class UInputAction* MouseLookAction;	
+	
+	UPROPERTY(EditAnywhere, Category ="Input")
+	class UInputAction* InteractAction;
 	
 public:
 	ADungeonEscapeCharacter();
@@ -89,6 +92,13 @@ public:
 
 	/** Returns first person camera component **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
+	
+	
+	UPROPERTY(EditAnywhere)
+	float MaxInterActionDistance = 300.0f;
+	
+	void Interact();
+	
 
 };
 
