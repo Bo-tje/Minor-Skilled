@@ -11,14 +11,17 @@
             "id": "6b83cc957880b799",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Design/The hunter.md",
-                "mode": "source",
-                "source": false
+                "file": "Planning/Goal mindmap.canvas",
+                "viewState": {
+                  "x": -397.1146346949006,
+                  "y": -61.03859033100236,
+                  "zoom": -1.3771820126084595
+                }
               },
-              "icon": "lucide-file",
-              "title": "The hunter"
+              "icon": "lucide-layout-dashboard",
+              "title": "Goal mindmap"
             }
           }
         ]
@@ -186,10 +189,14 @@
   },
   "active": "6b83cc957880b799",
   "lastOpenFiles": [
-    "Design/Threshold_Protocol_GDD.md",
+    "Planning/Goal mindmap.canvas",
+    "Design/C. Diegetic Narrative System.md",
+    "Design/B. Soundscape Manager.md",
+    "Design/A. The Quantum Stalker AI (C++ & EQS).md",
+    "Design/Threshold Protocol GDD.md",
+    "C. Diegetic Narrative System (The Radio).md",
     "Design/The hunter.md",
     "Planning.md",
-    "Planning/Goal mindmap.canvas",
     "Planning",
     "Minor Skilled",
     "@Goal mindmap.canvas",

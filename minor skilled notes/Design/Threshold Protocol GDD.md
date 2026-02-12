@@ -1,5 +1,7 @@
 # Threshold Protocol - Game Design Document
 
+^a1c452
+
 **Date:** 03 February 2026  
 **Genre:** First-Person Survival Horror  
 **Engine:** Unreal Engine (C++ Focus)  
@@ -39,21 +41,11 @@ Movement feels physical and desperate. The character controller emphasizes weigh
 
 ## 4. Key Systems (Technical Showcase)
 
-### A. The "Quantum Stalker" AI (C++ & EQS)
-*   **Herding Logic:** The AI does not just chase; it uses the Environment Query System (EQS) to find flank locations, pushing the player toward narrative markers.
-*   **Relocation Manager:** If the distance exceeds a `MaxTensionRange` (e.g., 50m) and Line of Sight is broken, the monster seamlessly "teleports" to a calculated intercept point ahead of the player.
-*   **Masking:** Teleportation is masked by diegetic effects—radio static spikes or distant "thuds" to simulate rapid movement.
+[[A. The Quantum Stalker AI (C++ & EQS)]]
 
-### B. Soundscape Manager
-*   **Proximity System:** Real-time calculation of distance to the Entity.
-*   **Dynamic Mixing:** As tension rises, natural sounds (crickets, wind) are filtered out, replaced by "The Hum" or silence.
-*   **Bush Interaction:** The monster emits invisible traces that trigger foliage rustling, allowing the player to track it via sound and environmental movement alone.
+[[B. Soundscape Manager]]
 
-### C. Diegetic Narrative System (The Radio)
-*   **Signal Proximity:** The radio acts as a Geiger counter for lore. Static clears into audio logs as the player nears "Weenies" (landmarks).
-*   **Lore:** "Field Recordings" from a failed government containment operation (FBC style). Hints at the entity's nature (e.g., "It herds prey toward the brush").
-
----
+[[C. Diegetic Narrative System]]
 
 ## 5. Narrative & Aesthetic
 
