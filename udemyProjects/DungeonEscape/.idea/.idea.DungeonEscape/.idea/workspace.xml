@@ -10,14 +10,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ca5bb49-9dea-4bfa-996b-2057ac2a5f05" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.obsidian/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../.obsidian/workspace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../minor skilled notes/.obsidian/community-plugins.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../minor skilled notes/.obsidian/community-plugins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../minor skilled notes/.obsidian/core-plugins.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../minor skilled notes/.obsidian/core-plugins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../minor skilled notes/.obsidian/graph.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../minor skilled notes/.obsidian/graph.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../minor skilled notes/.obsidian/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../minor skilled notes/.obsidian/workspace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../minor skilled notes/Design/A. The Quantum Stalker AI (C++ &amp; EQS).md" beforeDir="false" afterPath="$PROJECT_DIR$/../../minor skilled notes/Design/A. The Quantum Stalker AI (C++ &amp; EQS).md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../minor skilled notes/Design/B. Soundscape Manager.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../minor skilled notes/Design/B. Soundscape Manager.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DungeonEscape/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DungeonEscape/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Input/IMC_Default.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Input/IMC_Default.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/Door/Assets/Meshes/SM_Door.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/Door/Assets/Meshes/SM_Door.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/Door/Assets/Meshes/SM_DoorFrame_Corner.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/Door/Assets/Meshes/SM_DoorFrame_Corner.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/Door/Assets/Meshes/SM_DoorFrame_Edge.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/Door/Assets/Meshes/SM_DoorFrame_Edge.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/JumpPad/Assets/Meshes/SM_CircularBand.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/JumpPad/Assets/Meshes/SM_CircularBand.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/JumpPad/Assets/Meshes/SM_CircularGlow.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/JumpPad/Assets/Meshes/SM_CircularGlow.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/Target/Assets/SM_TargetBaseMesh.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Interactable/Target/Assets/SM_TargetBaseMesh.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Meshes/SM_ChamferCube.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Meshes/SM_ChamferCube.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Meshes/SM_Cylinder.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Meshes/SM_Cylinder.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Meshes/SM_QuarterCylinder.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Meshes/SM_QuarterCylinder.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyStuff/Blueprints/BP_TestDoorLock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyStuff/Blueprints/BP_TestDoorLock.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyStuff/Levels/TestLevel.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyStuff/Levels/TestLevel.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/DungeonEscape/DungeonEscapeCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DungeonEscape/DungeonEscapeCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/DungeonEscape/DungeonEscapeCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DungeonEscape/DungeonEscapeCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/DungeonEscape/Mover.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DungeonEscape/Mover.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/DungeonEscape/Mover.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DungeonEscape/Mover.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/DungeonEscape/Lock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DungeonEscape/Lock.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,17 +58,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "settings.editor.selected.configurable": "com.android.studio.ml.bot.mainConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C/C++ Project.DungeonEscape">
     <configuration name="DungeonEscape" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -169,6 +186,7 @@
       <workItem from="1770637411004" duration="1879000" />
       <workItem from="1770648147551" duration="4773000" />
       <workItem from="1770802815581" duration="16555000" />
+      <workItem from="1770894627776" duration="11658000" />
     </task>
     <servers />
   </component>
@@ -197,5 +215,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

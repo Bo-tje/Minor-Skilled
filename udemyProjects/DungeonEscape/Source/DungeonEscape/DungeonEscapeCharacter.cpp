@@ -1,6 +1,8 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "DungeonEscapeCharacter.h"
+
+#include "CollectableItem.h"
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -9,6 +11,8 @@
 #include "InputActionValue.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "DungeonEscape.h"
+#include "Lock.h"
+#include "CollectableItem.h"
 
 ADungeonEscapeCharacter::ADungeonEscapeCharacter()
 {
@@ -71,12 +75,54 @@ void ADungeonEscapeCharacter::SetupPlayerInputComponent(UInputComponent* PlayerI
 
 void ADungeonEscapeCharacter::Interact()
 {
-	FVector Start;
-	FVector End;
-	
-	Start = FirstPersonCameraComponent->GetComponentLocation();
-	End = Start + (FirstPersonCameraComponent->GetForwardVector() * MaxInterActionDistance);
+	FVector Start = FirstPersonCameraComponent->GetComponentLocation();
+	FVector End = Start + (FirstPersonCameraComponent->GetForwardVector() * MaxInterActionDistance);
 	DrawDebugLine(GetWorld(), Start, End, FColor::Red, false, 5.0f);
+	
+	FCollisionShape InteractionSphere = FCollisionShape::MakeSphere(InteractionSphereRadius);
+	DrawDebugSphere(GetWorld(), End, InteractionSphereRadius, 12, FColor::Blue, false, 5.0f);
+	
+	FHitResult HitResult;
+	bool HasHit = GetWorld()->SweepSingleByChannel(HitResult, 
+		Start, End, 
+		FQuat::Identity, 
+		ECC_GameTraceChannel2, 
+		InteractionSphere
+		);
+
+	if (HasHit)
+	{
+		AActor* HitActor = HitResult.GetActor();
+		if (HitActor->ActorHasTag("CollectableItem"))
+		{
+			if (ACollectableItem* CollectableItem = Cast<ACollectableItem>(HitActor))
+			{
+				ItemList.Add(CollectableItem->ItemName);
+				CollectableItem->Destroy();
+			}
+		} 
+		else if (HitActor->ActorHasTag("Lock"))
+		{
+			if (ALock* Lock = Cast<ALock>(HitActor))
+			{
+				if (Lock->GetIsKeyPlaced())
+				{
+					ItemList.Add(Lock->KeyItemName);
+					Lock->SetIsKeyPlaced(false);
+				}
+				else if (ItemList.Contains(Lock->KeyItemName))
+				{
+					ItemList.RemoveSingle(Lock->KeyItemName);	
+					Lock->SetIsKeyPlaced(true);
+				}
+			}
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Display, TEXT("No Hit Actor"));
+	}
+	
 }
 
 void ADungeonEscapeCharacter::MoveInput(const FInputActionValue& Value)

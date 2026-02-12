@@ -97,8 +97,14 @@ public:
 	UPROPERTY(EditAnywhere)
 	float MaxInterActionDistance = 300.0f;
 	
+	UPROPERTY(EditAnywhere)
+	float InteractionSphereRadius = 30.0f;
+	
 	void Interact();
 	
+private:
+	UPROPERTY(VisibleAnywhere)
+	TArray<FString> ItemList;
 
 };
 
