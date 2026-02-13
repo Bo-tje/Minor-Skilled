@@ -30,12 +30,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C++ notes.md",
+                "file": "Design/Threshold Protocol GDD.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C++ notes"
+              "title": "Threshold Protocol GDD"
+            }
+          },
+          {
+            "id": "5ff0f9ba91665b95",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "unreal notes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "unreal notes"
             }
           },
           {
@@ -49,7 +63,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -212,15 +226,17 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "9611dc3bccff0eab",
+  "active": "5ff0f9ba91665b95",
   "lastOpenFiles": [
+    "Design/Threshold Protocol GDD.md",
+    "unreal notes.md",
+    "Planning/Goal mindmap.png",
     "Planning/Goal mindmap.canvas",
     "C++ notes.md",
     "Learning",
     "Design/A. The Quantum Stalker AI (C++ & EQS).md",
     "Design/B. Soundscape Manager.md",
     "Design/C. Diegetic Narrative System.md",
-    "Design/Threshold Protocol GDD.md",
     "C. Diegetic Narrative System (The Radio).md",
     "Design/The hunter.md",
     "Planning.md",
