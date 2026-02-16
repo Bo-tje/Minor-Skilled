@@ -1,0 +1,10 @@
+Thursday feb 5: 7 hours making obstacle assault
+
+Monday feb 9: 5 hours researching pointers and references and starting dungeon escape
+
+Wednesday Feb 11: 6.5 hours dungeon escape pressure plate and lock system
+                2 hours research 3d model using ai
+
+Thursday Feb 12: 7 hours to finish up dungeon escape
+
+Friday Feb 13: 4 hours begining project battle blaster

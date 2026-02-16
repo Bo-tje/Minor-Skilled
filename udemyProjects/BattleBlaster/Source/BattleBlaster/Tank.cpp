@@ -13,7 +13,7 @@ ATank::ATank()
 	
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComponent->SetupAttachment(SpringArmComponent);
-}
+}ttetertrujfghjgh
 
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
