@@ -7,4 +7,6 @@ Wednesday Feb 11: 6.5 hours dungeon escape pressure plate and lock system
 
 Thursday Feb 12: 7 hours to finish up dungeon escape
 
-Friday Feb 13: 4 hours begining project battle blaster
+Friday Feb 13: 4 hours beginning project battle blaster
+
+Monday Feb 16: 6 hours finished the tank

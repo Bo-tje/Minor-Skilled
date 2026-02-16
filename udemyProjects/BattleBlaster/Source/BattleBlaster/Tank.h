@@ -2,11 +2,15 @@
 
 #pragma once
 
-#include "Camera/CameraComponent.h"
-#include "GameFramework/SpringArmComponent.h"
 #include "CoreMinimal.h"
 #include "BasePawn.h"
+#include "InputActionValue.h"
 #include "Tank.generated.h"
+
+class UInputMappingContext;
+class UInputAction;
+class USpringArmComponent;
+class UCameraComponent;
 
 /**
  * 
@@ -16,13 +20,7 @@ class BATTLEBLASTER_API ATank : public ABasePawn
 {
 	GENERATED_BODY()
 	
-	
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
 public:	
-	
 	ATank();
 	
 	// Called every frame
@@ -31,9 +29,35 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
-	UPROPERTY(VisibleAnywhere)
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+	void MoveInput(const FInputActionValue& Value);
+	void RotateInput(const FInputActionValue& Value);
+
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputMappingContext* MoveMappingContext;
+	
+
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* MoveAction;
+	
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* RotateAction;
+	
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float Speed = 400.f;
+	
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float TurnRate = 100.f;
+
+
+private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* SpringArmComponent;
 	
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* CameraComponent;
 };
