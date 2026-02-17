@@ -6,6 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "BattleBlasterGameModeBase.generated.h"
 
+class ATank;
 /**
  * 
  */
@@ -14,4 +15,12 @@ class BATTLEBLASTER_API ABattleBlasterGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+	
+public:
+	UPROPERTY(VisibleAnywhere)
+	ATank* Tank;
+	int32 TowerCount;
 };

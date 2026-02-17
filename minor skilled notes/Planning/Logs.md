@@ -10,3 +10,5 @@ Thursday Feb 12: 7 hours to finish up dungeon escape
 Friday Feb 13: 4 hours beginning project battle blaster
 
 Monday Feb 16: 6 hours finished the tank
+
+Tuesday Feb 17: 5 Hours turrets and bullets

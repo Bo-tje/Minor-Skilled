@@ -35,6 +35,7 @@ protected:
 
 	void MoveInput(const FInputActionValue& Value);
 	void RotateInput(const FInputActionValue& Value);
+	
 
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputMappingContext* MoveMappingContext;
@@ -45,6 +46,9 @@ protected:
 	
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* RotateAction;
+	
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* FireAction;
 	
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
