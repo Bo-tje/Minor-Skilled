@@ -1,56 +1,67 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Projectile.h"
+#include "Kismet/GameplayStatics.h"
+#include "HealthComponent.h"
+#include "Pooler.h"
+#include "GameFramework/ProjectileMovementComponent.h"
+#include "Components/StaticMeshComponent.h"
 
-// Sets default values
 AProjectile::AProjectile()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
-	InitialLifeSpan = 3.0f;
-	
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Projectile Mesh"));
 	SetRootComponent(ProjectileMesh);
 	
-	if(!ProjectileMovementComponent)
-	{
-		// Use this component to drive this projectile's movement.
-		ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComponent"));
-		ProjectileMovementComponent->SetUpdatedComponent(RootComponent);
-		ProjectileMovementComponent->InitialSpeed = 3000.0f;
-		ProjectileMovementComponent->MaxSpeed = 3000.0f;
-		ProjectileMovementComponent->bRotationFollowsVelocity = true;
-		ProjectileMovementComponent->bShouldBounce = false;
-		ProjectileMovementComponent->Bounciness = 0.3f;
-		ProjectileMovementComponent->ProjectileGravityScale = 0.0f;
-	}
+	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComponent"));
+	ProjectileMovementComponent->SetUpdatedComponent(ProjectileMesh);
+	ProjectileMovementComponent->InitialSpeed = 3000.0f;
+	ProjectileMovementComponent->MaxSpeed = 3000.0f;
+	ProjectileMovementComponent->bRotationFollowsVelocity = true;
+	ProjectileMovementComponent->bShouldBounce = false;
+	ProjectileMovementComponent->ProjectileGravityScale = 0.0f;
 }
 
-// Called when the game starts or when spawned
 void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-	
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
 }
 
-// Called every frame
-void AProjectile::Tick(float DeltaTime)
+void AProjectile::OnSpawnFromPool(const FVector& Direction)
 {
-	Super::Tick(DeltaTime);
+	// Reset velocity and reactivate movement
+	ProjectileMovementComponent->Velocity = Direction * ProjectileMovementComponent->InitialSpeed;
+	
+	// Ensure the component is active and ticking
+	ProjectileMovementComponent->SetComponentTickEnabled(true);
+	ProjectileMovementComponent->Activate(true);
 
+	// Reset lifespan timer
+	GetWorldTimerManager().SetTimer(LifeSpanTimerHandle, this, &AProjectile::ReturnToPool, 3.0f, false);
 }
 
-void AProjectile::FireInDirection(const FVector& ShootDirection)
-{	
-	ProjectileMovementComponent->Velocity = ShootDirection * ProjectileMovementComponent->InitialSpeed;
-}
-
-void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
-	FVector NormalImpulse, const FHitResult& Hit)
+void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
- Destroy();
+	AActor* MyOwner = GetOwner();
+	if (MyOwner)
+	{
+		if (OtherActor && OtherActor != MyOwner && OtherActor != this)
+		{
+			UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, UDamageType::StaticClass() );
+		}
+	}
+	
+	ReturnToPool();
 }
 
+void AProjectile::ReturnToPool()
+{
+	GetWorldTimerManager().ClearTimer(LifeSpanTimerHandle);
+	
+	if (UUnrealObjectPooler* Pooler = UUnrealObjectPooler::Get(this))
+	{
+		Pooler->ReturnObjectToPool(this);
+	}
+}

@@ -2,6 +2,8 @@
 
 
 #include "BasePawn.h"
+#include "Pooler.h"
+#include "Projectile.h"
 
 // Sets default values
 ABasePawn::ABasePawn()
@@ -41,12 +43,18 @@ void ABasePawn::Fire()
 	FVector ProjectileSpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
 	FRotator ProjectileSpawnRotation = ProjectileSpawnPoint->GetComponentRotation();
 	
-	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, 
-		ProjectileSpawnLocation, ProjectileSpawnRotation);
-
-	if (Projectile)
+	if (UUnrealObjectPooler* Pooler = UUnrealObjectPooler::Get(this))
 	{
-		Projectile->SetOwner(this);
+		AProjectile* Projectile = Pooler->SpawnObject<AProjectile>(ProjectileClass, ProjectileSpawnLocation, ProjectileSpawnRotation, EPoolType::Projectiles);
+		if (Projectile)
+		{
+			Projectile->SetOwner(this);
+			Projectile->OnSpawnFromPool(ProjectileSpawnRotation.Vector());
+		}
 	}
 }
 
+void ABasePawn::HandleDestruction()
+{
+	
+}

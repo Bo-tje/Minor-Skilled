@@ -29,6 +29,13 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
+	APlayerController* PlayerController;
+	
+	bool IsAlive = true;
+	
+	void HandleDestruction();
+	void SetPlayerEnabled(bool Enabled);
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -56,6 +63,9 @@ protected:
 	
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float TurnRate = 100.f;
+
+	
+
 
 
 private:

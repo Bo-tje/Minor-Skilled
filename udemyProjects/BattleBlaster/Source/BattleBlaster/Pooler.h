@@ -11,10 +11,9 @@
 UENUM(BlueprintType)
 enum class EPoolType : uint8
 {
-	Nodes,
-	NodesSpawner,
+	Projectiles,
 	GameObjects,
-	Billboards
+
 };
 
 /**

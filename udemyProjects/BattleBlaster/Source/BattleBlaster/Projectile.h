@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "GameFramework/ProjectileMovementComponent.h"
 #include "Projectile.generated.h"
+
+class UProjectileMovementComponent;
+class UStaticMeshComponent;
 
 UCLASS()
 class BATTLEBLASTER_API AProjectile : public AActor
@@ -13,25 +15,27 @@ class BATTLEBLASTER_API AProjectile : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AProjectile();
 
+	// Called when the projectile is "spawned" from the pool
+	void OnSpawnFromPool(const FVector& Direction);
+
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UStaticMeshComponent* ProjectileMesh;
 	
-	UPROPERTY(VisibleAnywhere)
-	UStaticMeshComponent* ProjectileMesh = nullptr;
-	
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UProjectileMovementComponent* ProjectileMovementComponent;
-
-	virtual void Tick(float DeltaTime) override;
-	void FireInDirection(const FVector& ShootDirection);
 	
+	UPROPERTY(EditAnywhere)
+	float Damage = 25.f;
+
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+private:
+	FTimerHandle LifeSpanTimerHandle;
+	void ReturnToPool();
 };

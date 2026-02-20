@@ -20,8 +20,8 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-
-	if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
+	PlayerController = Cast<APlayerController>(GetController());
+	if (PlayerController)
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{
@@ -35,7 +35,7 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
+	if (PlayerController)
 	{
 		FHitResult HitResult;
 		PlayerController->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
@@ -75,6 +75,32 @@ void ATank::RotateInput(const FInputActionValue& Value)
 	DeltaRotation.Yaw = InputValue * TurnRate * UGameplayStatics::GetWorldDeltaSeconds(this);
 	
 	AddActorLocalRotation(DeltaRotation, true);
+}
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+	
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+	SetPlayerEnabled(false);
+	IsAlive = false;
+}
+
+void ATank::SetPlayerEnabled(bool Enabled)
+{
+	if (PlayerController)
+	{
+		if (Enabled)
+		{
+			EnableInput(PlayerController);
+		}
+		else
+		{
+			DisableInput(PlayerController);
+		}
+		PlayerController->bShowMouseCursor = Enabled;
+	}
 }
 
 
