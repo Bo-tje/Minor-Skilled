@@ -28,6 +28,7 @@ void ATank::BeginPlay()
 			Subsystem->AddMappingContext(MoveMappingContext, 0);
 		}
 	}
+	SetPlayerEnabled(false);
 }
 
 // Called every frame

@@ -3,6 +3,7 @@
 
 #include "BattleBlasterGameModeBase.h"
 
+#include "BattleBlasterGameInstance.h"
 #include "Kismet/GameplayStatics.h"
 #include "Tower.h"
 #include "Tank.h"
@@ -36,14 +37,44 @@ void ABattleBlasterGameModeBase::BeginPlay()
 			}
 		}
 	}
-	UE_LOG(LogTemp, Warning, TEXT("Total Towers: %i"), TowerCount);
+	if (APlayerController* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+	{
+		ScreenMessageWidget = CreateWidget<UScreenMessage>(PlayerController, ScreenMessageClass);
+		if (ScreenMessageWidget)
+		{
+			ScreenMessageWidget->AddToPlayerScreen();
+			ScreenMessageWidget->SetMessageText("Get Ready!");
+		}
+	}
+	
+	CountDownSeconds = CountDownDelay;
+	GetWorldTimerManager().SetTimer(CountDownTimerHandle, this, &ABattleBlasterGameModeBase::OnCountDownTimerTimeout, 1.0f, true);
+}
+
+void ABattleBlasterGameModeBase::OnCountDownTimerTimeout()
+{
+	CountDownSeconds--;
+
+	if (CountDownSeconds > 0)
+	{
+		UE_LOG(LogTemp, Display, TEXT("CountdownSeconds: %i"), CountDownSeconds);
+		ScreenMessageWidget->SetMessageText(FString::FromInt(CountDownSeconds));
+	}
+	else if (CountDownSeconds == 0)
+	{
+		UE_LOG(LogTemp, Display, TEXT("GO!"));
+		ScreenMessageWidget->SetMessageText("GO!");
+		Tank->SetPlayerEnabled(true);
+	}
+	else
+	{
+		GetWorldTimerManager().ClearTimer(CountDownTimerHandle);
+		ScreenMessageWidget->SetVisibility(ESlateVisibility::Hidden);
+	}
 }
 
 void ABattleBlasterGameModeBase::ActorDied(AActor* DeadActor)
 {
-	bool IsGameOver = false;
-	bool IsVictory = false;
-	
 	if (DeadActor == Tank)
 	{
 		Tank->HandleDestruction();
@@ -63,19 +94,36 @@ void ABattleBlasterGameModeBase::ActorDied(AActor* DeadActor)
 				IsVictory = true;
 			}
 		}
-		if (IsGameOver)
-		{
-			FString GameOverString = IsVictory ? "Victory!" : "Defeat!";
-			UE_LOG(LogTemp, Display, TEXT("Game Over: %s"), *GameOverString);
-			
-			FTimerHandle GameOverTimerHandle;
-			GetWorldTimerManager().SetTimer(GameOverTimerHandle, this, &ABattleBlasterGameModeBase::OnGameOverTimerTimeout, GameOverDelay, false);
-		}
+	}
+	if (IsGameOver)
+	{
+		FString GameOverString = IsVictory ? "Victory!" : "Defeat!";
+		ScreenMessageWidget->SetMessageText(GameOverString);
+		ScreenMessageWidget->SetVisibility(ESlateVisibility::Visible);
+		
+		UE_LOG(LogTemp, Display, TEXT("Game Over: %s"), *GameOverString);
+		FTimerHandle GameOverTimerHandle;
+		GetWorldTimerManager().SetTimer(GameOverTimerHandle, this, &ABattleBlasterGameModeBase::OnGameOverTimerTimeout, GameOverDelay, false);
 	}
 }
 
 void ABattleBlasterGameModeBase::OnGameOverTimerTimeout()
 {
-	FString CurrentLevel = UGameplayStatics::GetCurrentLevelName(GetWorld());
-	UGameplayStatics::OpenLevel(GetWorld(), *CurrentLevel);
+	if (UGameInstance* GameInstance = GetGameInstance())
+	{
+		if (UBattleBlasterGameInstance* BattleBlasterGameInstance = Cast<UBattleBlasterGameInstance>(GameInstance))
+		{
+			if (IsVictory)
+			{
+				BattleBlasterGameInstance->LoadNextLevel();
+			}
+			else
+			{
+				BattleBlasterGameInstance->RestartCurrentLevel();
+			}
+		}
+	}
+	
 }
+
+
