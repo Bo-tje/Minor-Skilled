@@ -16,3 +16,9 @@ Tuesday Feb 17: 5 Hours turrets and bullets
 Friday Feb 20: 6 Hours on making a health and damage and implementing object pooling
 
 Saturday Feb 21: 3 Hours Levels and ui
+
+Monday Feb 23:  3 Hours  Finishing up Battle Blaster project
+
+Monday Mar 2: 1,5 Hours preparing and having QA session with Iain Douglas
+
+Total Time: 56 Hours

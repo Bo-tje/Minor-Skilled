@@ -1,0 +1,3 @@
+QA with Iain:
+The original idea sound a bit ambitious, there are a lot of possible assets and your just one person. This game might not be the right fit for showing of your c++ skills. Think in terms of mechanics and what could be cool and fun to make instead of making mechanics around a story.  Look at it more from a Engineering point of view than a Designer point of view.
+focus on engagement loops - gameplay loops - economy
