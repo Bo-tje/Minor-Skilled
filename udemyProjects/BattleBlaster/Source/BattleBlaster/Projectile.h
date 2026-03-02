@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "NiagaraComponent.h"
+#include "NiagaraFunctionLibrary.h"
 #include "Projectile.generated.h"
 
 class UProjectileMovementComponent;
@@ -19,6 +21,22 @@ public:
 
 	// Called when the projectile is "spawned" from the pool
 	void OnSpawnFromPool(const FVector& Direction);
+	
+	UPROPERTY(VisibleAnywhere)
+	UNiagaraComponent* TrailParticles;
+	
+	UPROPERTY(EditAnywhere)
+	UNiagaraSystem* HitParticles;
+	
+	UPROPERTY(EditAnywhere)
+	USoundBase* LaunchSound;
+
+	UPROPERTY(EditAnywhere)
+	USoundBase* HitSound;
+	
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UCameraShakeBase> HitCameraShakeClass;
+
 
 protected:
 	virtual void BeginPlay() override;

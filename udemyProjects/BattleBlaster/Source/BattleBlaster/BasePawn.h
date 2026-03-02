@@ -6,6 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include "Components/CapsuleComponent.h"
 #include "Projectile.h"
+#include "NiagaraFunctionLibrary.h"
 #include "BasePawn.generated.h"
 
 UCLASS()
@@ -17,6 +18,11 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
+	UPROPERTY(EditAnywhere)
+	USoundBase* DeathSound;
+	
+	UPROPERTY(EditAnywhere)
+	UNiagaraSystem* DeathParticles;
 
 	UPROPERTY(VisibleAnywhere)
 	UCapsuleComponent* CapsuleComponent = nullptr;

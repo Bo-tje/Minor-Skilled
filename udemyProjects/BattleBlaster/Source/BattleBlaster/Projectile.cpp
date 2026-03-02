@@ -4,6 +4,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "HealthComponent.h"
 #include "Pooler.h"
+#include "AssetTypeActions/AssetDefinition_SoundBase.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/StaticMeshComponent.h"
 
@@ -21,12 +22,18 @@ AProjectile::AProjectile()
 	ProjectileMovementComponent->bRotationFollowsVelocity = true;
 	ProjectileMovementComponent->bShouldBounce = false;
 	ProjectileMovementComponent->ProjectileGravityScale = 0.0f;
+	
+	TrailParticles = CreateDefaultSubobject<UNiagaraComponent>(TEXT("TrailParticles"));
+	TrailParticles->SetupAttachment(RootComponent);
 }
 
 void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+	
+	if (LaunchSound)
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), LaunchSound, GetActorLocation(), GetActorRotation());
 }
 
 void AProjectile::OnSpawnFromPool(const FVector& Direction)
@@ -50,6 +57,19 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 		if (OtherActor && OtherActor != MyOwner && OtherActor != this)
 		{
 			UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, UDamageType::StaticClass() );
+
+			if (HitParticles)
+			{
+				UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), HitParticles, GetActorLocation(), GetActorRotation());
+			}
+			if (HitSound)
+				UGameplayStatics::PlaySoundAtLocation(GetWorld(), HitSound, GetActorLocation(), GetActorRotation());
+			
+			if (HitCameraShakeClass)
+			{
+				if (APlayerController* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+					PlayerController->ClientStartCameraShake(HitCameraShakeClass);
+			}
 		}
 	}
 	
