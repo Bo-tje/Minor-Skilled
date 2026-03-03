@@ -10,14 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a45e2eaf-5e00-4e99-bc4a-add71fa6562c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ObstacleAssault/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyStuff/Levels/TestLevel.umap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ObstacleAssault/MovingPlatform.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ObstacleAssault/MovingPlatform.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ObstacleAssault/MovingPlatform.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ObstacleAssault/MovingPlatform.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../minor skilled notes/.obsidian/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../minor skilled notes/.obsidian/workspace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../minor skilled notes/Planning/Logs.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../minor skilled notes/Planning/Logs.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DungeonEscape/.idea/.idea.DungeonEscape/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DungeonEscape/.idea/.idea.DungeonEscape/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ObstacleAssault/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ObstacleAssault/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,29 +35,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ObstacleAssault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="QodanaHighlightedReportService">
-    <option name="localRunNotPublishedPersistedInfo">
-      <LocalReportPersistedInfo>
-        <option name="path" value="C:\Users\bo\AppData\Local\Temp\qodana_output\qodana.sarif.json" />
-        <option name="reportGuid" value="31a1a864-be48-4fd7-92d6-68fb4f26d584" />
-        <option name="reportName" value="ObstacleAssault/qodana/2026-02-05" />
-      </LocalReportPersistedInfo>
-    </option>
-  </component>
-  <component name="QodanaIsSelectedPersistenceService">
-    <option name="selectedOrLoading" value="true" />
-  </component>
+}]]></component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="C:\Users\bo\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="31a1a864-be48-4fd7-92d6-68fb4f26d584" reportId="ObstacleAssault/qodana/2026-02-05" />
@@ -182,6 +167,7 @@
       <updated>1770291244183</updated>
       <workItem from="1770291259658" duration="10360000" />
       <workItem from="1770381933430" duration="42000" />
+      <workItem from="1772533055621" duration="188000" />
     </task>
     <servers />
   </component>

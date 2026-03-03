@@ -98,12 +98,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "QA.md",
+                "file": "Planning/Logs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "QA"
+              "title": "Logs"
             }
           },
           {
@@ -282,8 +282,8 @@
   },
   "active": "326645b11677ffc5",
   "lastOpenFiles": [
-    "Other possibilities.md",
     "QA.md",
+    "Other possibilities.md",
     "Planning/Goal mindmap.png",
     "Untitled",
     "Planning/Logs.md",

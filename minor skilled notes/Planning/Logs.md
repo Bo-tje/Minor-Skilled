@@ -22,4 +22,8 @@ Monday Feb 23:  3 Hours  Finishing up Battle Blaster project
 Monday Mar 2: 1,5 Hours preparing and having QA session with Iain Douglas
 			 5 Hours custom animation setup and blending
 
-Total Time: 61 Hours
+Tuesday Mar 3: 0,5 Hours QA with Daniel Valente de Macedo
+			 1 Hour researching and restructuring my object pooler as a unreal engine plugin
+			 1 Hour making progress presentation
+
+Total Time: 63,5 Hours
