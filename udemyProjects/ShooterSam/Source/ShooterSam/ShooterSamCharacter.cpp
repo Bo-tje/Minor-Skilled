@@ -12,6 +12,27 @@
 #include "InputActionValue.h"
 #include "ShooterSam.h"
 
+void AShooterSamCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	Health = MaxHealth;
+	
+	OnTakeAnyDamage.AddDynamic(this, &AShooterSamCharacter::OnDamageTaken);
+	
+	GetMesh()->HideBoneByName("weapon_r", EPhysBodyOp::PBO_None);
+	
+	Gun = GetWorld()->SpawnActor<AGun>(GunClass);
+	
+	if (Gun)
+	{
+		Gun->SetOwner(this);
+		Gun->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, "WeaponSocket");
+		Gun->OwnerController = GetController();
+	}
+		
+}
+
 AShooterSamCharacter::AShooterSamCharacter()
 {
 	// Set size for collision capsule
@@ -65,6 +86,10 @@ void AShooterSamCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AShooterSamCharacter::Look);
+		
+		// Shooting
+		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Triggered, this, &AShooterSamCharacter::Shoot);
+
 	}
 	else
 	{
@@ -131,3 +156,32 @@ void AShooterSamCharacter::DoJumpEnd()
 	// signal the character to stop jumping
 	StopJumping();
 }
+
+void AShooterSamCharacter::Shoot()
+{
+	if (Gun)
+		Gun->PullTrigger();
+}
+
+void AShooterSamCharacter::OnDamageTaken(AActor* DamagedActor, float Damage, const class UDamageType* DamageType,
+	class AController* InstigatedBy, AActor* DamageCauser)
+{
+	if (IsAlive)
+	{
+		Health -= Damage;
+		UE_LOG(LogTemp, Display, TEXT("damage taken: %f"), Damage);
+		
+		if (Health <= 0.f)
+		{
+			IsAlive = false;
+			Health = 0.0f;
+			
+			GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			UE_LOG(LogTemp, Display, TEXT("character died: %s"), *GetActorNameOrLabel());
+		}
+	}
+}
+
+
+
+
