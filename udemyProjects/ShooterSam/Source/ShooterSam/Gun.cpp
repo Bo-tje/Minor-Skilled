@@ -35,6 +35,7 @@ void AGun::Tick(float DeltaTime)
 
 void AGun::PullTrigger()
 {
+	UGameplayStatics::PlaySoundAtLocation(GetWorld(), ShootSound, GetActorLocation());
 	if (OwnerController)
 	{
 		FVector ViewPointLocation;
@@ -52,6 +53,7 @@ void AGun::PullTrigger()
 		if (IsHit)
 		{
 			LineTraceEnd = HitResult.Location;
+			UGameplayStatics::PlaySoundAtLocation(GetWorld(), ImpactSound, HitResult.ImpactPoint);
 			if (AActor* HitActor = HitResult.GetActor())
 			{
 				UGameplayStatics::ApplyDamage(HitActor, Damage, OwnerController, this, UDamageType::StaticClass());

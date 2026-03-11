@@ -21,11 +21,9 @@ void AShooterSamGameMode::BeginPlay()
 	TArray<AActor*> ShooterAIActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AShooterAI::StaticClass(), ShooterAIActors);
 	
-	for (int32 AIActorNumber = 0; AIActorNumber < ShooterAIActors.Num(); AIActorNumber++)
+	for (AActor* ShooterAIActor : ShooterAIActors)
 	{
-		AActor* ShooterAIActor = ShooterAIActors[AIActorNumber];
-		AShooterAI* ShooterAI =Cast<AShooterAI>(ShooterAIActor);
-		
+		AShooterAI* ShooterAI = Cast<AShooterAI>(ShooterAIActor);
 		if (ShooterAI)
 		{
 			ShooterAI->StartBehaviorTree(Player);

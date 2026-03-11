@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "UserWidget_HudWidget.h"
 #include "ShooterSamPlayerController.generated.h"
 
 class UInputMappingContext;
@@ -41,4 +42,11 @@ protected:
 	/** Input mapping context setup */
 	virtual void SetupInputComponent() override;
 
+public:
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UUserWidget_HudWidget> HUDWidgetClass;
+	
+	UPROPERTY(VisibleAnywhere)
+	UUserWidget_HudWidget* HUDWidget;
+	
 };
